@@ -3,6 +3,7 @@ Collection of customised parts designed to be 3D printed.
 
 ## windowFramePart
 We need a support to fill the gab between an aluminium windows frame and the frame of a mosquito net.
+
 <img src="https://raw.githubusercontent.com/AngelaFabregues/3DCustomisedParts/master/windowFramePart/draft.jpg" height="200">
 
 ## squaredMapPieceFrame
