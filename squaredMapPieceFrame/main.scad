@@ -4,11 +4,11 @@ holeExtra=0.1;
 
 width = 43;
 height = 3; // multiple of layerHeight
-border = 5*nozzle; // multiple of nozzle
+border = 4*nozzle; // multiple of nozzle
 extra = 10;
 carpetHeight = 1; // multiple of layerHeight
 
-thickness=border+holeExtra-nozzle; // thickness - holeExtra must be multiple of nozzle.
+thickness=border+holeExtra; // thickness - holeExtra must be multiple of nozzle.
 
 totalWidth=width+(2*border);
 
