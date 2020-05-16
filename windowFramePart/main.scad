@@ -1,14 +1,14 @@
-width=6.2; // x
-depth=2.9; // y
-height=1; // z
-holeWidth=2;
+width=62; // x
+depth=29; // y
+height=10; // z
+holeWidth=20;
 
-extra=0.05;
-extraHole=1;
-f=0.2;
-g=0.2;
-h=0.2;
-i=0.2;
+extra=0.5;
+extraHole=10;
+f=2;
+g=2;
+h=2;
+i=2;
 
 difference(){
     // A
