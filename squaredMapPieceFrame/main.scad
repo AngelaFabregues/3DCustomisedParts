@@ -4,11 +4,11 @@ holeExtra=0.1;
 
 width = 43;
 height = 3; // multiple of layerHeight
-border = 4*nozzle; // multiple of nozzle
+border = 5*nozzle; // multiple of nozzle
 extra = 10;
 carpetHeight = 1; // multiple of layerHeight
 
-thickness=border+holeExtra; // thickness - holeExtra must be multiple of nozzle.
+thickness=border+holeExtra-nozzle; // thickness - holeExtra must be multiple of nozzle.
 
 totalWidth=width+(2*border);
 
@@ -40,9 +40,26 @@ difference(){
                 anchor(separation);
             }
         }
-        translate([totalWidth/2,totalWidth/2,-extra]){
-            r=(width-5*border)/2;
-            cylinder(height+carpetHeight+2*extra,r,r);
+        union(){
+            holeSize=width/6;
+            startOffset=totalWidth/4;
+            endOffset=3*startOffset;
+            //dalt esquerra
+            translate([startOffset,startOffset,-extra]){
+                cylinder(height+carpetHeight+2*extra,holeSize,holeSize);
+            }
+            //baix esquerra
+            translate([startOffset,endOffset,-extra]){
+                cylinder(height+carpetHeight+2*extra,holeSize,holeSize);
+            }
+            //dalt dreta
+            translate([endOffset,startOffset,-extra]){
+                cylinder(height+carpetHeight+2*extra,holeSize,holeSize);
+            }
+            //baix dreta
+            translate([endOffset,endOffset,-extra]){
+                cylinder(height+carpetHeight+2*extra,holeSize,holeSize);
+            }
         }
         //dalt
         translate([totalWidth/2-1.5*thickness-holeExtra,totalWidth-thickness,-extra]){
