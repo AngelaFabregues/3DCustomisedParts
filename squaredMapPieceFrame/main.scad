@@ -2,7 +2,7 @@ nozzle=0.4;
 layerHeight=0.2;
 holeExtra=0.1;
 
-width = 45;
+width = 43;
 height = 3; // multiple of layerHeight
 border = 4*nozzle; // multiple of nozzle
 extra = 10;
