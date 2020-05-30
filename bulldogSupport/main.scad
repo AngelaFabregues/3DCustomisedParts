@@ -1,0 +1,65 @@
+e=0.5;
+d=3;
+$fn=100;
+difference(){
+    union(){
+        cube([70,54,10]);
+        translate([0,-10,0]){
+            cube([20,10,20]);
+            translate([50,0,0]){
+                cube([20,10,20]);
+            }
+        }
+        cube([20,10,60]);
+        translate([50,0,0]){
+            cube([20,10,60]);
+        }
+        translate([20,0,10]){
+            cube([30,10,10]);
+        }
+    }
+    union(){
+        translate([23,20,-20]){
+            cylinder(50,d/2+e,d/2+e);
+            translate([0,24,0]){
+                cylinder(50,d/2+e,d/2+e);
+            }
+            translate([24,0,0]){
+                cylinder(50,d/2+e,d/2+e);
+            }
+            translate([24,24,0]){
+                cylinder(50,d/2+e,d/2+e);
+            }
+        }
+        translate([10,20,40]){
+             rotate([90,90,0]){
+                cylinder(50,d/2+e,d/2+e);
+             }
+             translate([50,0,0]){
+                rotate([90,90,0]){
+                    cylinder(50,d/2+e,d/2+e);
+                }
+             }
+             translate([0,0,10]){
+                rotate([90,90,0]){
+                    cylinder(50,d/2+e,d/2+e);
+                }
+             }
+             translate([50,0,10]){
+                rotate([90,90,0]){
+                    cylinder(50,d/2+e,d/2+e);
+                }
+            }
+        }
+        translate([-1,-10,10]){
+            rotate([45,0,0]){
+                cube([20+2,14,10]);
+            }
+            translate([50,0,0]){
+                rotate([45,0,0]){
+                    cube([20+2,14,10]);
+                }
+            }
+        }
+    }
+}
