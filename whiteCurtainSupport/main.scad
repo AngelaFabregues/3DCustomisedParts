@@ -1,4 +1,4 @@
-// Coding 75min.
+// Coding 80min.
 
 nozzle=0.4;
 layerHeight=0.2;
@@ -8,7 +8,7 @@ outsideHeigth=23;
 outsideLength=5;  // Testing ready
 //outsideLength=60; // Production ready
 barDiameter=15;
-emptyDiffDiameter=1.5;
+emptyDiffDiameter=1;
 emptyDiff=0.1;
 extra=10;
 hornWidth=2.5;
@@ -24,7 +24,8 @@ difference(){
         }
         translate([0,(outsideLength+extra)/2,-(outsideHeigth/2)+barDiameter/2]){
             rotate([90,0,0]){
-                cylinder(outsideLength+extra,barDiameter/2+2*emptyDiff,barDiameter/2+emptyDiffDiameter);
+                diameter=barDiameter/2+emptyDiffDiameter;
+                cylinder(outsideLength+extra,diameter,diameter);
             }
         }
     }
