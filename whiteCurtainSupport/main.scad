@@ -4,9 +4,9 @@ nozzle=0.4;
 layerHeight=0.2;
 
 outsideWidth=23;
-outsideHeigth=23;
-outsideLength=5;  // Testing ready
-//outsideLength=60; // Production ready
+outsideHeigth=22;
+//outsideLength=5;  // Testing ready
+outsideLength=35; // Production ready
 barDiameter=15;
 emptyDiffDiameter=1;
 emptyDiff=0.1;
