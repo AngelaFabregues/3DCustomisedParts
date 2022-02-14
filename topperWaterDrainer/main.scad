@@ -1,12 +1,12 @@
-width=100; // x ????? amplada forat blanc
-depth=11; // y wireffame plus extra infill depth
-holeDepth=3; // Wireframe  depth
-height=48; // z
+width=100; // x ????? wireframe width
+depth=11; // y wireframe plus extra infill depth
+holeDepth=4; // Wireframe  depth 3 + broken screws
+height=48; // z Wireframe height
 holeWidth=width-(5+0.8+0.6); //???? 
 holeHeight=28;
-extra=0.5; //hole
-extraDeep=20; //hole
-holeDiameter=5+2*extra;
+extra=0.5; // to help adjusting pieces
+extraDeep=20; //hole to help with differences
+holeDiameter=5+2*extra; // screw supports diameter with help adjusting
 
 difference(){
     union(){
