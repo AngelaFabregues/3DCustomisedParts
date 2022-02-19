@@ -50,12 +50,51 @@ module wireframe(width,height, depth){
     }
 }
 
+module roundCornersLandscape(w,h,d,rd,rp){
+    l=5;
+    roundDiameter=w/rd;
+    roundPosition=w/rp;
+    union(){
+        difference(){
+            translate([0,0,0]){
+                cube([w,d,h],true);
+            }
+            union(){
+                translate([roundPosition,0,0]){
+                    rotate([90,90,180]){
+                        cylinder(d+l, roundDiameter,roundDiameter,true);
+                    }
+                }
+                translate([-roundPosition,0,0]){
+                    rotate([90,90,180]){
+                        cylinder(d+l, roundDiameter,roundDiameter,true);
+                    }
+                }
+                translate([0,0,0]){
+                    cube([w/2,d+l,h],true);
+                }
+            }
+        }
+        difference(){
+            translate([0,0,0]){
+                cube([w+l,d,h+l],true);
+            }
+            translate([0,0,0]){
+                cube([w,d+l,h],true);
+            }
+        }
+    }
+}
+
 difference(){
     union(){
         wireframe(wireframeWidth,wireframeHeight,wireframeDepth);
         // White hole wireframe extra Infill
         translate([0,whiteHoleDepth/2,0]){
-            cube([whiteHoleWidth,whiteHoleDepth,whiteHoleHeight],true);
+            difference(){
+                cube([whiteHoleWidth,whiteHoleDepth,whiteHoleHeight],true);
+                roundCornersLandscape(whiteHoleWidth, whiteHoleHeight, whiteHoleDepth+1,3,4);
+            }
         }
     }
     // Main hole
