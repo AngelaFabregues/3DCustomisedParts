@@ -6,61 +6,60 @@ wireframeHeight=40;
 holeHeight=28;
 holeRightBias=5;
 
-depth=11; // y wireframe plus extra infill depth
-holeDepth=4; // Wireframe  depth 3 + broken screws
+wireframeDepth=4;
+whiteHoleDepth=6;
 
 extra=0.5; // to help adjusting pieces
 extraDeep=20; //hole to help with differences
 holeDiameter=5+2*extra; // screw supports diameter with help adjusting
 
-difference(){
-    union(){
-        difference(){
-            union(){
-                //black hole wireframe
-                cube([wireframeWidth,depth,wireframeHeight],true);
-            }
-            union(){
-                // screw holes
-                translate([-wireframeWidth/2,0,0]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
-                translate([wireframeWidth/2,0,0]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
-                translate([wireframeWidth/2,0,wireframeHeight/2]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
-                translate([-wireframeWidth/2,0,-wireframeHeight/2]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
-                translate([wireframeWidth/2,0,-wireframeHeight/2]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
-                translate([-wireframeWidth/2,0,wireframeHeight/2]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
-                translate([wireframeWidth*1/6,0,wireframeHeight/2]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
-                translate([-wireframeWidth*1/6,0,wireframeHeight/2]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
-                translate([wireframeWidth*1/6,0,-wireframeHeight/2]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
-                translate([-wireframeWidth*1/6,0,-wireframeHeight/2]){
-                    cube([holeDiameter,depth+extraDeep,holeDiameter],true);
-                }
+module screwHole(width, depth){
+    translate([width,0,depth]){
+        cube([holeDiameter,wireframeDepth+extraDeep,holeDiameter],true);
+    }
+}
+
+module wireframe(width,height, depth){
+    hingeWidth=5;
+    hingeDepth=1;
+    difference(){
+        union(){
+            //black hole wireframe
+            translate([0,-depth/2,0]){
+                cube([width,depth,height],true);
             }
         }
+        union(){
+            // screw holes
+            screwHole(-width/2,height/2);
+            screwHole(-width/2,-height/2);
+            screwHole(width/2,height/2);
+            screwHole(width/2,-height/2);
+            screwHole(width/2,0);
+            screwHole(-width/2,0);
+            screwHole(width/6,height/2);
+            screwHole(width/6,-height/2);
+            screwHole(-width/6,-height/2);
+            screwHole(-width/6,height/2);
+     
+            // Hinge
+            translate([-width/2+holeDiameter/2+holeRightBias,-depth+hingeDepth/2,0]){
+                cube([hingeWidth,hingeDepth+1,holeHeight],true);
+            }
+        }
+    }
+}
+
+difference(){
+    union(){
+        wireframe(wireframeWidth,wireframeHeight,wireframeDepth);
         // White hole wireframe extra Infill
-        translate([0,holeDepth,0]){
-            cube([whiteHoleWidth,depth-holeDepth,whiteHoleHeight],true);
+        translate([0,whiteHoleDepth/2,0]){
+            cube([whiteHoleWidth,whiteHoleDepth,whiteHoleHeight],true);
         }
     }
     // Main hole
     translate([holeRightBias/2,0,0]){
-        cube([holeWidth,depth+extraDeep,holeHeight], true);
+        cube([holeWidth,extraDeep,holeHeight], true);
     }
 }
