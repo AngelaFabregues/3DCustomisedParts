@@ -43,8 +43,8 @@ module wireframe(width,height, depth){
             screwHole(-width/6,height/2);
      
             // Hinge
-            translate([-width/2+holeDiameter/2+holeRightBias,-depth+hingeDepth/2,0]){
-                cube([hingeWidth,hingeDepth+1,holeHeight],true);
+            translate([-width/2+holeDiameter/2+holeRightBias-extra,-depth+hingeDepth/2+extra,0]){
+                cube([hingeWidth+2*extra,hingeDepth+1+extra,holeHeight+2*extra],true);
             }
         }
     }
@@ -99,6 +99,6 @@ difference(){
     }
     // Main hole
     translate([holeRightBias/2,0,0]){
-        cube([holeWidth,extraDeep,holeHeight], true);
+        cube([holeWidth+2*extra,extraDeep,holeHeight+2*extra], true);
     }
 }
