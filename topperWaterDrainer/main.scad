@@ -45,6 +45,10 @@ module wireframe(width,height, depth){
             // Hinge
             translate([-width/2+holeDiameter/2+holeRightBias-extra,-depth+hingeDepth/2+extra,0]){
                 cube([hingeWidth+2*extra,hingeDepth+1+extra,holeHeight+2*extra],true);
+                rotate([0,0,45]){
+                    cube([hingeWidth+2*extra,hingeDepth+1+extra,holeHeight+2*extra],true);
+                }
+
             }
         }
     }
