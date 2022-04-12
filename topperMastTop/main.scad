@@ -1,9 +1,9 @@
-tubeDiameter=60;
+tubeDiameter=35;
 tubeThighness=5;
-stopperExtraThigness=3;
-stopperTopHeight=10;
-stopperBottomHeight=10;
-depth=50;
+stopperExtraThigness=4;
+stopperTopHeight=5;
+stopperBottomHeight=5;
+depth=20;
 
 // Main tube
 difference(){
