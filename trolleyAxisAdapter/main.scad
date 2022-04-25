@@ -1,7 +1,7 @@
 width=25; // x
 depth=80; // y
-height=55; // z
-hole=25; // 25 i 20
+height=60; // z
+hole=20; // 25 i 20
 extra=0.5;
 extraHole=5;
 limit=2;
