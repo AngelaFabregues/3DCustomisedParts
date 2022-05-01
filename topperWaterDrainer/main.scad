@@ -20,8 +20,6 @@ module screwHole(width, depth){
 }
 
 module wireframe(width,height, depth){
-    hingeWidth=5;
-    hingeDepth=5;
     difference(){
         union(){
             //black hole wireframe
@@ -41,11 +39,6 @@ module wireframe(width,height, depth){
             screwHole(width/6,-height/2);
             screwHole(-width/6,-height/2);
             screwHole(-width/6,height/2);
-     
-            // Hinge
-            translate([-width/2+holeDiameter/2+holeRightBias-extra,-depth+hingeDepth/2+extra,0]){
-                cube([hingeWidth+2*extra,hingeDepth+1+extra,holeHeight+2*extra],true);
-            }
         }
     }
 }
@@ -89,16 +82,24 @@ module roundCornersLandscape(w,h,d,rd,rp){
 difference(){
     union(){
         wireframe(wireframeWidth,wireframeHeight,wireframeDepth);
-        // White hole wireframe extra Infill
         translate([0,whiteHoleDepth/2,0]){
             difference(){
+                // White hole wireframe extra Infill
                 cube([whiteHoleWidth,whiteHoleDepth,whiteHoleHeight],true);
                 roundCornersLandscape(whiteHoleWidth, whiteHoleHeight, whiteHoleDepth+1,3,4);
             }
         }
     }
-    // Main hole
-    translate([holeRightBias/2,0,0]){
-        cube([holeWidth+2*extra,extraDeep,holeHeight+2*extra], true);
+    union(){
+        // Main hole
+        translate([holeRightBias/2,0,0]){
+            cube([holeWidth+2*extra,extraDeep,holeHeight+2*extra], true);
+        }
+        // Hinge
+        hingeWidth=5;
+        hingeDepth=6;
+        translate([-wireframeWidth/2+holeDiameter/2+holeRightBias-extra,-wireframeDepth+hingeDepth/2+extra,0]){
+            cube([hingeWidth+2*extra,hingeDepth+1+extra,holeHeight+2*extra],true);
+        }
     }
 }
