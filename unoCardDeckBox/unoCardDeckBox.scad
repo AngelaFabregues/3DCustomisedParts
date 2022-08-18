@@ -1,13 +1,15 @@
-cardW=60; // card width
-cardH=100; // card height
-deckH=30; // card deck height
+printerWallThickness=0.4;
+
+cardW=56; // card width
+cardH=87; // card height
+deckH=34; // card deck height
 boxE=1; //box empty space between card and box wall
-boxT=1; //box thighness
+boxT=2*printerWallThickness; //box thickness
 
 /*
 Card deck box for cards that are size x+y and a deck that is z height.
 e is the empty space left between the card deck and the box walls.
-t is the thighness of the wall.
+t is the thickness of the wall.
 */
 module box(x,y,z,e,t){
     limit=50;
@@ -18,6 +20,7 @@ module box(x,y,z,e,t){
         }
     }
 }
+//box(cardW,cardH,deckH,boxE,boxT);
 
 /*
 Lid for the card deck box.
@@ -27,10 +30,7 @@ module boxLid(x,y,z,e,t){
         box(x+2*(t+e),y+2*(t+e),z+t,e,t);
     }
 }
-
 //boxLid(cardW,cardH,deckH,boxE,boxT);
-
-//box(cardW,cardH,deckH,boxE,boxT);
 
 /*
 Card deck box tunned for the UNO H20 game.
@@ -50,9 +50,9 @@ module unoBox(x,y,z,e,t){
         }
     }
     // horns
-    hornD=5;
-    hornCardW=10;
-    hornCardH=10;
+    hornD=4;
+    hornCardW=11;
+    hornCardH=13;
     translate([hornCardW+e+t,hornCardH+e+t,0]){
         cylinder(z,hornD,hornD/2);
     }
