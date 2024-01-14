@@ -48,9 +48,9 @@ module block(sy,sz,by,e){
     }
 }
 
-d=6; //diametre forat pern
-f=10; //costat femella pern
-ff=3; //fondaria femella pern
+d=8; //diametre forat pern
+f=13; //costat femella pern
+ff=7; //fondaria femella pern
 difference(){
     union(){
         main(sy,sz,by,e);
