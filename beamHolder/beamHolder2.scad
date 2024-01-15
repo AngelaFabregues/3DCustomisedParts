@@ -75,17 +75,17 @@ module mainF(sy,sz,by,e,p){
 }
 
 //TEST
-translate([-0.2,0,0]){
-    mainM(sy,sz,by,e,p);
-}
-translate([45+65+2*sy,0,sz]){
-    rotate([0,180,0]){
-        mainF(sy,sz,by,e,p);
-    }
-}
+//translate([-0.2,0,0]){
+//    mainM(sy,sz,by,e,p);
+//}
+//translate([45+65+2*sy,0,sz]){
+//    rotate([0,180,0]){
+//        mainF(sy,sz,by,e,p);
+//    }
+//}
 
 //PRINT
-//mainM(sy,sz,by,e,p);
-//translate([sy+25,sy+5,0]){
-//    mainF(sy,sz,by,e,p);
-//}
+mainM(sy,sz,by,e,p);
+translate([sy+25,sy+5,0]){
+    mainF(sy,sz,by,e,p);
+}
