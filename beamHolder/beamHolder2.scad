@@ -30,48 +30,62 @@ module main(sy,sz,by,e,l){
                     }
                 }
             }
-            vd=3.1; // Varilla refuerzo
-            translate([e/2,sy/2,sz-vd*2]){
-                rotate([0,90,0]){
-                    cylinder(2*e,vd/2,vd/2,true);
-                }
-            }
         }
     }
 }
 p=4; //power, intersection of the cylinder
 module mainM(sy,sz,by,e,p){
-    l=50;
-    main(sy,sz,by,e,l);
-    translate([l+sy+p,sy/2,sz/2]){
-        cylinder(sz,sy/3-0.2,sy/3-0.2,true);
+    l=45;
+    difference(){
+        union(){
+            main(sy,sz,by,e,l);
+            translate([l+sy+p,sy/2,sz/2]){
+                cylinder(sz,sy/3-0.2,sy/3-0.2,true);
+            }
+        }
+        vd=3.1; // Varilla refuerzo
+        translate([e/2,sy/2,sz-vd*2]){
+            rotate([0,90,0]){
+                cylinder(2*e,vd/2,vd/2,true);
+            }
+        }
     }
 }
 
 module mainF(sy,sz,by,e,p){
     l=65;
-
-    rotate([0,180,0]){
         difference(){
             main(sy,sz,by,e,l);
             translate([l+sy-p,sy/2,-sz/2]){
                 cylinder(e,sy/3,sy/3,true);
             }
             hd=4; // Forat per a penjar
-        
             translate([l+sy/3,sy/2,sz/3]){
                 rotate([90,0,0]){
                     cylinder(2*e,hd/2,hd/2,true);
                 }
-            }    
+            }
+            vd=3.1; // Varilla refuerzo
+            translate([e/2,sy/2,vd*2]){
+                rotate([0,90,0]){
+                    cylinder(2*e,vd/2,vd/2,true);
+                }
+            }
         }
-    }
 }
 
+//TEST
 translate([-0.2,0,0]){
     mainM(sy,sz,by,e,p);
 }
-translate([2*57.5+2*sy,0,sz]){
-    mainF(sy,sz,by,e,p);
+translate([45+65+2*sy,0,sz]){
+    rotate([0,180,0]){
+        mainF(sy,sz,by,e,p);
+    }
 }
 
+//PRINT
+//mainM(sy,sz,by,e,p);
+//translate([sy+25,sy+5,0]){
+//    mainF(sy,sz,by,e,p);
+//}
