@@ -10,20 +10,20 @@ e=100; //extra for substraction
 
 module main(sy,sz,by,e,l){
     difference(){
-        cube([l+sy,50+sy,sz]);
+        cube([l+sy,45+sy,sz]);
         union(){
             translate([sy+35,sy,-e/2]){ // SA
-                cube([l-30,60,sz+e]);
+                cube([l-30,55,sz+e]);
             }
             translate([sy,sy,-e/2]){ // SB
-                cube([l,30,sz+e]);
+                cube([l,25,sz+e]);
             }
-            translate([sy,sy+30,-sz+e/2]){ //SC
+            translate([sy,sy+25,-sz+e/2]){ //SC
                 rotate([180,0,45]){
-                    cube([l,42.5,sz+e]);
+                    cube([l,35,sz+e]);
                 }
             }
-            translate([0,sy+30,-sz-e/2]){ //SD
+            translate([0,sy+25,-sz-e/2]){ //SD
                 rotate([0,0,45]){
                     translate([-e/2,0,0]){
                         cube([l+e,40,sz+e]);
